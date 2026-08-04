@@ -1,6 +1,14 @@
 from pathlib import Path
 import streamlit as st
 
+# =====================================================
+# RUTA BASE DEL PROYECTO (independiente del directorio de trabajo)
+# Este archivo vive en: <raiz_proyecto>/pages/bienvenida.py
+# Por eso .parent.parent apunta a <raiz_proyecto>, igual que en utils/prediccion.py
+# =====================================================
+BASE_DIR = Path(__file__).resolve().parent.parent
+ASSETS_DIR = BASE_DIR / "assets"
+
 
 def mostrar_bienvenida():
 
@@ -17,10 +25,12 @@ def mostrar_bienvenida():
     with izquierda:
 
         # LOGO
-        logo = Path("assets/Logo_UNAB.png")
+        logo = ASSETS_DIR / "Logo_UNAB.png"
         if logo.exists():
             st.image(str(logo), width=160)
-        
+        else:
+            st.warning(f"No se encontró la imagen: {logo}")
+
         # TÍTULO UNIFICADO Y HOMOGÉNEO
         st.markdown(
             """
@@ -44,7 +54,6 @@ def mostrar_bienvenida():
 
         st.markdown("<h3 style='margin-top:0px; margin-bottom:6px; font-size:22px;'>Bienvenido</h3>", unsafe_allow_html=True)
 
-        # TEXTO PRINCIPAL CON TAMAÑO DE LETRA AUMENTADO
         st.markdown(
             """
             <p style="font-size: 17px; line-height: 1.6; color: #4B5563; margin-bottom: 20px;">
@@ -54,7 +63,6 @@ def mostrar_bienvenida():
             unsafe_allow_html=True
         )
 
-        # TARJETA 1: MODELO DE KOLB (Letra aumentada)
         with st.container(border=True):
             st.markdown(
                 """
@@ -79,7 +87,6 @@ def mostrar_bienvenida():
 
         st.markdown("<div style='margin-bottom: 12px;'></div>", unsafe_allow_html=True)
 
-        # TARJETA 2: APOYO PEDAGÓGICO (Letra aumentada)
         with st.container(border=True):
             st.markdown(
                 """
@@ -103,10 +110,6 @@ def mostrar_bienvenida():
 
         st.markdown("<div style='margin-bottom: 16px;'></div>", unsafe_allow_html=True)
 
-        # ============================================
-        # BOTÓN
-        # ============================================
-
         if st.button("Comenzar evaluación", use_container_width=True, type="primary"):
             st.session_state.page = "informacion"
             st.rerun()
@@ -117,13 +120,12 @@ def mostrar_bienvenida():
 
     with derecha:
 
-        imagen = Path("assets/Campus_UNAB.jpg")
+        imagen = ASSETS_DIR / "Campus_UNAB.jpg"
 
         if imagen.exists():
             st.image(str(imagen), use_container_width=True)
-
         else:
-            st.warning("No se encontró la imagen Campus_UNAB.jpg")
+            st.warning(f"No se encontró la imagen: {imagen}")
 
     st.caption(
         "© 2026 Universidad Autónoma de Bucaramanga · Facultad de Ingenierías · Maestría en Ciencia de Datos"
