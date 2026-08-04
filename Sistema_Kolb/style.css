@@ -1,0 +1,506 @@
+/*==================================================
+SISTEMA KOLB - ESTILOS GENERALES
+Universidad Autónoma de Bucaramanga
+==================================================*/
+
+/*==============================
+FUENTE
+==============================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+html,
+body,
+[class*="css"]{
+    font-family:'Inter',sans-serif;
+}
+
+/*==============================
+COLORES
+==============================*/
+
+:root{
+
+    --primary:#F58220;
+    --primary-dark:#D86F16;
+
+    --secondary:#1F2D4D;
+
+    --background:#F4F6FB;
+
+    --card:#FFFFFF;
+
+    --text:#4B5563;
+
+    --title:#1F2D4D;
+
+    --border:#E7EAF3;
+
+}
+
+/*==============================
+FONDO GENERAL
+==============================*/
+
+.stApp{
+
+    background:var(--background);
+
+}
+
+/*==============================
+CONTENEDOR PRINCIPAL
+==============================*/
+
+.block-container{
+
+    max-width:1400px;
+
+    padding-top:35px;
+
+    padding-bottom:35px;
+
+    padding-left:45px;
+
+    padding-right:45px;
+
+}
+
+/*==============================
+SIDEBAR
+==============================*/
+
+[data-testid="stSidebar"]{
+
+    display:none;
+
+}
+
+/*==============================
+HEADER STREAMLIT
+==============================*/
+
+header{
+
+    visibility:hidden;
+
+}
+
+#MainMenu{
+
+    visibility:hidden;
+
+}
+
+footer{
+
+    visibility:hidden;
+
+}
+
+/*==============================
+TÍTULOS
+==============================*/
+
+h1{
+
+    color:var(--title);
+
+    font-weight:800;
+
+}
+
+h2{
+
+    color:var(--secondary);
+
+    font-weight:700;
+
+}
+
+h3{
+
+    color:var(--secondary);
+
+    font-weight:700;
+
+}
+
+h4{
+
+    color:var(--secondary);
+
+    font-weight:600;
+
+}
+
+p{
+
+    color:var(--text);
+
+    line-height:1.7;
+
+}
+
+/*=========================================
+BOTONES
+=========================================*/
+
+.stButton > button{
+
+    width:100%;
+
+    height:58px;
+
+    background:#F58220 !important;
+
+    color:#FFFFFF !important;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    border:none !important;
+
+    border-radius:14px;
+
+    transition:all .25s ease;
+
+    box-shadow:0 8px 18px rgba(245,130,32,.25);
+
+}
+
+.stButton > button:hover{
+
+    background:#D96E12 !important;
+
+    color:#FFFFFF !important;
+
+    transform:translateY(-2px);
+
+}
+
+.stButton > button p{
+
+    color:#FFFFFF !important;
+
+    font-weight:700;
+
+}
+
+.stButton button:focus{
+
+    border:none;
+
+    box-shadow:none;
+
+}
+
+/*==============================
+INPUTS
+==============================*/
+
+.stTextInput input,
+.stNumberInput input,
+.stSelectbox,
+.stDateInput,
+.stTextArea textarea{
+
+    border-radius:12px;
+
+}
+
+/*==============================
+SELECTBOX
+==============================*/
+
+[data-baseweb="select"]{
+
+    border-radius:12px;
+
+}
+
+/*==============================
+RADIOS
+==============================*/
+
+div[role="radiogroup"]{
+
+    gap:12px;
+
+}
+
+/*==============================
+IMÁGENES
+==============================*/
+
+img{
+
+    border-radius:18px;
+
+}
+
+/*==============================
+DIVIDER
+==============================*/
+
+hr{
+
+    border:none;
+
+    border-top:1px solid var(--border);
+
+    margin-top:35px;
+
+    margin-bottom:35px;
+
+}
+
+/*==============================
+CAPTION
+==============================*/
+
+.stCaption{
+
+    text-align:center;
+
+    color:#7C8595;
+
+}
+
+/*==============================
+TARJETAS (containers)
+==============================*/
+
+[data-testid="stVerticalBlock"] > div:has(> div[data-testid="stVerticalBlockBorderWrapper"]){
+
+    margin-bottom:18px;
+
+}
+
+[data-testid="stVerticalBlockBorderWrapper"]{
+
+    background:#FFFFFF;
+
+    border:1px solid #E6EAF2;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:0 10px 25px rgba(31,45,77,.08);
+
+}
+
+/*==============================
+PROGRESS BAR
+==============================*/
+
+.stProgress > div > div{
+
+    background:var(--primary);
+
+}
+
+/*==============================
+ALERTAS
+==============================*/
+
+[data-testid="stAlert"]{
+
+    border-radius:15px;
+
+}
+
+/*==============================
+TABLAS
+==============================*/
+
+table{
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+/*==============================
+ESPACIADO
+==============================*/
+
+.element-container{
+
+    margin-bottom:.5rem;
+
+}
+
+/*==============================
+RESPONSIVE
+==============================*/
+
+@media (max-width:900px){
+
+.block-container{
+
+padding-left:20px;
+
+padding-right:20px;
+
+}
+
+h1{
+
+font-size:34px;
+
+}
+
+}
+   CORRECCIÓN DEFINITIVA: INPUTS A 30px Y BOTONES GRANDES
+
+   ============================================== */
+
+
+
+/* Mantener el tamaño de los botones intacto y grande */
+
+.stButton > button {
+
+    font-size: 18px !important;
+
+}
+
+
+
+.stButton > button p,
+
+.stButton > button span,
+
+.stButton > button div {
+
+    font-size: 18px !important;
+
+}
+
+
+
+/* Forzar que Edad, Género, Colegio y Promedio crezcan a 30px uniformemente */
+
+.stNumberInput input {
+
+    font-size: 30px !important;
+
+    height: 60px !important;
+
+}
+
+
+
+.stSelectbox div[data-baseweb="select"] {
+
+    min-height: 60px !important;
+
+    font-size: 30px !important;
+
+}
+
+
+
+div[data-baseweb="select"] span,
+
+div[data-baseweb="select"] div {
+
+    font-size: 30px !important;
+
+}
+
+
+
+div[data-baseweb="menu"] div {
+
+    font-size: 24px !important;
+
+}
+
+/* ==============================================
+
+   IGUALAR TAMAÑO VISUAL ENTRE NÚMEROS Y SELECTBOXES
+
+   ============================================== */
+
+
+
+/* Reducir ligeramente el input numérico para que no se vea desproporcionado */
+
+.stNumberInput input {
+
+    font-size: 20px !important;
+
+    height: 48px !important;
+
+}
+
+
+
+/* Forzar que el texto y la caja del Selectbox tengan exactamente el mismo tamaño y presencia */
+
+.stSelectbox div[data-baseweb="select"] {
+
+    min-height: 48px !important;
+
+    font-size: 20px !important;
+
+}
+
+
+
+div[data-baseweb="select"] span,
+
+div[data-baseweb="select"] div {
+
+    font-size: 20px !important;
+
+}
+
+
+
+/* Tamaño de las opciones cuando despliegas el menú */
+
+div[data-baseweb="menu"] div {
+
+    font-size: 18px !important;
+
+}
+
+/* ==============================================
+
+   AGRANDAR ÚNICAMENTE SELECTBOX (Género y Tipo de colegio)
+
+   ============================================== */
+
+
+
+/* Aumenta aquí el número (ej. 24px, 26px, etc.) para hacerlo más grande manualmente */
+
+.stSelectbox div[data-baseweb="select"] {
+
+    min-height: 52px !important;
+
+    font-size: 52px !important;
+
+}
+
+
+
+div[data-baseweb="select"] span,
+
+div[data-baseweb="select"] div {
+
+    font-size: 52px !important;
+
+} 
+/* ==============================================
+   AUMENTAR TAMAÑO DEL TEXTO SUBTÍTULO DEL FORMULARIO
+   ============================================== */
+.block-container p {
+    font-size: 19px !important; /* Puedes cambiar 19px por el tamaño que prefieras (ej: 21px, 23px) */
+}
