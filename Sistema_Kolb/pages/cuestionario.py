@@ -337,7 +337,21 @@ def mostrar_cuestionario():
 
         st.markdown("<hr style='margin: 12px 0; border: none; border-top: 1px solid #E5E7EB;'>", unsafe_allow_html=True)
 
-        # Banda superior de dimensiones
+        # ==========================================================
+        # NÚMERO DE DIMENSIÓN ACTUAL
+        # ==========================================================
+        if indice < 6:
+            numero_dimension = 1
+        elif indice < 11:
+            numero_dimension = 2
+        elif indice < 14:
+            numero_dimension = 3
+        else:
+            numero_dimension = 4
+
+        # ==========================================================
+        # BANDA SUPERIOR DE DIMENSIONES
+        # ==========================================================
         st.markdown(
             f"""
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -345,7 +359,7 @@ def mostrar_cuestionario():
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                     {pregunta["dimension"]}
                 </div>
-                <div style="color: #6B7280; font-size: 11px; text-align: right;">Dimensión 1 de 4</div>
+                <div style="color: #6B7280; font-size: 11px; text-align: right;">Dimensión {numero_dimension} de 4</div>
             </div>
             """,
             unsafe_allow_html=True
