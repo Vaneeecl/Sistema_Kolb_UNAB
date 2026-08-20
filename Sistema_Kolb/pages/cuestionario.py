@@ -1,5 +1,6 @@
 import streamlit as st
 from utils.prediccion import predecir_estilo
+
 # ==========================================================
 # PREGUNTAS DEL CUESTIONARIO
 # ==========================================================
@@ -159,7 +160,7 @@ def mostrar_cuestionario():
     porcentaje = int(((indice + 1) / len(preguntas)) * 100)
 
     # ==========================================================
-    # ESTILOS CSS (Ajuste preciso para tarjetas de opciones y botones delgados)
+    # ESTILOS CSS
     # ==========================================================
     st.markdown(
         """
@@ -237,7 +238,6 @@ def mostrar_cuestionario():
             margin-top: 12px;
             margin-bottom: 8px;
         }
-        /* Altura específica y controlada para las tarjetas de opciones */
         div[data-testid="column"] .stButton button {
             background: transparent;
             border: none;
@@ -252,7 +252,6 @@ def mostrar_cuestionario():
             background: rgba(245, 130, 32, 0.04);
             border: none;
         }
-        /* Forzar que los botones de navegación inferior sean delgados y proporcionados */
         div[data-testid="stHorizontalBlock"] > div:not(:nth-child(2)) .stButton button {
             min-height: 42px !important;
             height: 42px !important;
@@ -414,7 +413,7 @@ def mostrar_cuestionario():
         st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
         # ==========================================================
-        # BOTONES DE NAVEGACIÓN INFERIORES (DELGADOS Y DIVIDIDOS)
+        # BOTONES DE NAVEGACIÓN INFERIORES
         # ==========================================================
         col_b1, col_b2, col_b3 = st.columns([1, 1.5, 1])
 
@@ -435,28 +434,67 @@ def mostrar_cuestionario():
 
         with col_b3:
             texto_boton = "Finalizar →" if indice == len(preguntas) - 1 else "Siguiente →"
+
             if st.button(texto_boton, use_container_width=True, type="primary"):
-                if indice == len(preguntas) - 1:
-                    # Datos personales
+
+                # ==========================================================
+                # VALIDACIÓN OBLIGATORIA DE LA RESPUESTA
+                # ==========================================================
+
+                respuesta_actual = st.session_state.respuestas.get(
+                    pregunta["codigo"],
+                    None
+                )
+
+                if respuesta_actual is None:
+
+                    st.warning(
+                        "⚠️ Por favor, selecciona una respuesta antes de continuar."
+                    )
+
+                elif indice == len(preguntas) - 1:
+
+                    # ======================================================
+                    # DATOS PERSONALES
+                    # ======================================================
+
                     datos = st.session_state.datos_estudiante
 
-                    # Respuestas del cuestionario
+                    # ======================================================
+                    # RESPUESTAS DEL CUESTIONARIO
+                    # ======================================================
+
                     respuestas = st.session_state.respuestas
 
-                    # Ejecutar el modelo
+                    # ======================================================
+                    # EJECUTAR EL MODELO
+                    # ======================================================
+
                     estilo, probabilidades = predecir_estilo(
                         datos,
                         respuestas
                     )
 
-                    # Guardar resultados
+                    # ======================================================
+                    # GUARDAR RESULTADOS
+                    # ======================================================
+
                     st.session_state.resultado = estilo
                     st.session_state.probabilidades = probabilidades
 
-                    # Ir a la página de resultados
+                    # ======================================================
+                    # IR A RESULTADOS
+                    # ======================================================
+
                     st.session_state.page = "resultado"
                     st.rerun()
+
                 else:
+
+                    # ======================================================
+                    # AVANZAR A LA SIGUIENTE PREGUNTA
+                    # ======================================================
+
                     st.session_state.pregunta_actual += 1
                     st.rerun()
 
