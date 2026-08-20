@@ -149,8 +149,7 @@ def mostrar_resultado():
         probs = {"Asimilador": 91.0, "Convergente": 5.0, "Divergente": 3.0, "Acomodador": 1.0}
 
     estilo_predicho = str(estilo_predicho).title()
-    confianza = probs[estilo_predicho]
-    nivel_confianza = "Alta confianza" if confianza >= 70 else ("Confianza moderada" if confianza >= 40 else "Confianza baja")
+    probabilidad_estimada = probs[estilo_predicho]
 
     descripciones_por_estilo = {
         "Asimilador": "Los estudiantes con este resultado tienden a preferir la conceptualización abstracta y la observación reflexiva. Generalmente comprenden con facilidad los fundamentos teóricos antes de abordar su aplicación práctica y disfrutan del análisis lógico de la información.",
@@ -188,13 +187,23 @@ def mostrar_resultado():
                 {str(estilo_predicho).upper()}
             </div>
             <div style="font-size: 12px; font-weight: 700; color: #6B7280; text-transform: uppercase;">
-                Confianza del modelo
+                Probabilidad estimada
             </div>
             <div style="font-size: 36px; font-weight: 800; color: #10B981; margin-top: 2px;">
-                {confianza:.0f}%
+                {probabilidad_estimada:.0f}%
             </div>
             <div style="font-size: 13px; color: #10B981; font-weight: 600; margin-top: 6px; display:flex; align-items:center; justify-content:center; gap:5px;">
-                {_icon(ICON_CHECK, '#10B981')} {nivel_confianza}
+                {_icon(ICON_CHECK, '#10B981')} Resultado orientativo
+            </div>
+            <div style="
+                font-size: 11px;
+                color: #6B7280;
+                line-height: 1.4;
+                margin-top: 10px;
+                text-align: center;">
+                Este valor representa la probabilidad estimada
+                por el modelo y debe interpretarse de manera orientativa, 
+                considerando el tamaño muestral del estudio.
             </div>
         </div>
         """, unsafe_allow_html=True)
