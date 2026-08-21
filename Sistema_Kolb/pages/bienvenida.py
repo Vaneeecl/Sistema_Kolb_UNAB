@@ -39,7 +39,7 @@ def mostrar_bienvenida():
                     color:#1F2D4D;
                     font-size:27px;
                     font-weight:800;">
-                    Prototipo de aplicación para predecir estilos de aprendizaje de Kolb en estudiantes de ecuaciones diferenciales
+                    Prototipo de aplicación para predecir estilos de aprendizaje de Kolb
                 </span>
                 <span style="
                     color:#F58220;
