@@ -239,27 +239,24 @@ def mostrar_cuestionario():
             margin-bottom: 8px;
         }
         div[data-testid="column"] .stButton button {
-            background: transparent !important;
-            border: 2px solid transparent !important;
-            box-shadow: none !important;
-            width: 100% !important;
-            height: 130px !important;
-            min-height: 130px !important;
-            border-radius: 10px !important;
-            padding: 0px !important;
-            color: transparent !important;
-            cursor: pointer !important;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            width: 100%;
+            height: 100%;
+            min-height: 130px;
+            border-radius: 10px;
+            padding: 0px;
         }
         div[data-testid="column"] .stButton button:hover {
-            background: rgba(245, 130, 32, 0.04) !important;
-            border: 2px solid rgba(245, 130, 32, 0.20) !important;
+            background: rgba(245, 130, 32, 0.04);
+            border: none;
         }
         div[data-testid="stHorizontalBlock"] > div:not(:nth-child(2)) .stButton button {
             min-height: 42px !important;
             height: 42px !important;
             border-radius: 8px !important;
             font-weight: 600;
-            color: inherit !important;
         }
         </style>
         """,
@@ -389,122 +386,43 @@ def mostrar_cuestionario():
         # ==========================================================
         # TARJETAS DE OPCIONES INTERACTIVAS
         # ==========================================================
-        respuesta_actual = st.session_state.respuestas.get(
-            pregunta["codigo"],
-            None
-        )
+        respuesta_actual = st.session_state.respuestas.get(pregunta["codigo"], None)
         
         cols = st.columns(4)
 
         for i, opcion in enumerate(opciones):
             with cols[i]:
                 seleccionado = (respuesta_actual == opcion)
+                
+                borde_tarjeta = "#F58220" if seleccionado else "#E5E7EB"
+                fondo_tarjeta = "#FFF8F2" if seleccionado else "#FFFFFF"
+                sombra_tarjeta = "0 3px 10px rgba(245, 130, 32, 0.12)" if seleccionado else "none"
+                
+                radio_html = (
+                    '''<div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #F58220; display: flex; align-items: center; justify-content: center; margin: 6px auto 0 auto;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #F58220;"></div></div>'''
+                    if seleccionado else
+                    '''<div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D1D5DB; margin: 6px auto 0 auto;"></div>'''
+                )
 
-                # Colores según selección
-                if seleccionado:
-                    borde_tarjeta = "#F58220"
-                    fondo_tarjeta = "#FFF8F2"
-                    sombra_tarjeta = "0 3px 10px rgba(245, 130, 32, 0.12)"
-                else:
-                    borde_tarjeta = "#E5E7EB"
-                    fondo_tarjeta = "#FFFFFF"
-                    sombra_tarjeta = "none"
-
-                # Radio visual
-                if seleccionado:
-                    radio_html = """
-                    <div style="
-                        width:16px;
-                        height:16px;
-                        border-radius:50%;
-                        border:2px solid #F58220;
-                        display:flex;
-                        align-items:center;
-                        justify-content:center;
-                        margin:6px auto 0 auto;
-                        box-sizing:border-box;
-                    ">
-                        <div style="
-                            width:8px;
-                            height:8px;
-                            border-radius:50%;
-                            background:#F58220;
-                        "></div>
-                    </div>
-                    """
-                else:
-                    radio_html = """
-                    <div style="
-                        width:16px;
-                        height:16px;
-                        border-radius:50%;
-                        border:2px solid #D1D5DB;
-                        margin:6px auto 0 auto;
-                        box-sizing:border-box;
-                    "></div>
-                    """
-
-                # Tarjeta visual
                 contenido_tarjeta = f"""
-                <div style="
-                    background-color:{fondo_tarjeta};
-                    border:2px solid {borde_tarjeta};
-                    border-radius:10px;
-                    padding:10px 4px;
-                    text-align:center;
-                    min-height:130px;
-                    box-sizing:border-box;
-                    display:flex;
-                    flex-direction:column;
-                    justify-content:space-between;
-                    box-shadow:{sombra_tarjeta};
-                    pointer-events:none;
-                ">
-
+                <div style="background-color: {fondo_tarjeta}; border: 2px solid {borde_tarjeta}; border-radius: 10px; padding: 10px 4px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-shadow: {sombra_tarjeta};">
                     <div>
                         {svg_iconos[i]}
-
-                        <div style="
-                            font-size:12px;
-                            font-weight:600;
-                            color:#374151;
-                            line-height:1.2;
-                        ">
+                        <div style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.2;">
                             {opcion}
                         </div>
                     </div>
-
                     <div>
                         {radio_html}
                     </div>
-
                 </div>
                 """
                 
-                # Botón real de Streamlit
-                if st.button(
-                    "",
-                    key=f"card_btn_{indice}_{i}",
-                    help=f"Seleccionar: {opcion}",
-                    use_container_width=True
-                ):
+                if st.button(opcion, key=f"card_btn_{indice}_{i}", help="Haz clic para seleccionar"):
                     st.session_state.respuestas[pregunta["codigo"]] = opcion
                     st.rerun()
                 
-                # Mostrar la tarjeta sobre el botón
-                st.markdown(
-                    f"""
-                    <div style="
-                        margin-top:-130px;
-                        position:relative;
-                        z-index:2;
-                        pointer-events:none;
-                    ">
-                        {contenido_tarjeta}
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+                st.markdown(f"<div style='margin-top: -130px; pointer-events: none;'>{contenido_tarjeta}</div>", unsafe_allow_html=True)
 
         st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
