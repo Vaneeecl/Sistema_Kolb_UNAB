@@ -1,5 +1,4 @@
 import streamlit as st
-from textwrap import dedent
 from utils.prediccion import predecir_estilo
 
 # ==========================================================
@@ -394,14 +393,14 @@ def mostrar_cuestionario():
             pregunta["codigo"],
             None
         )
+        
         cols = st.columns(4)
+
         for i, opcion in enumerate(opciones):
-
             with cols[i]:
+                seleccionado = (respuesta_actual == opcion)
 
-                seleccionado = respuesta_actual == opcion
-
-                # Colores de la tarjeta
+                # Colores según selección
                 if seleccionado:
                     borde_tarjeta = "#F58220"
                     fondo_tarjeta = "#FFF8F2"
@@ -414,72 +413,74 @@ def mostrar_cuestionario():
                 # Radio visual
                 if seleccionado:
                     radio_html = """
-        <div style="
-            width:16px;
-            height:16px;
-            border-radius:50%;
-            border:2px solid #F58220;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            margin:6px auto 0 auto;
-            box-sizing:border-box;
-        ">
-            <div style="
-                width:8px;
-                height:8px;
-                border-radius:50%;
-                background:#F58220;
-            "></div>
-        </div>
-        """
+                    <div style="
+                        width:16px;
+                        height:16px;
+                        border-radius:50%;
+                        border:2px solid #F58220;
+                        display:flex;
+                        align-items:center;
+                        justify-content:center;
+                        margin:6px auto 0 auto;
+                        box-sizing:border-box;
+                    ">
+                        <div style="
+                            width:8px;
+                            height:8px;
+                            border-radius:50%;
+                            background:#F58220;
+                        "></div>
+                    </div>
+                    """
                 else:
                     radio_html = """
-        <div style="
-            width:16px;
-            height:16px;
-            border-radius:50%;
-            border:2px solid #D1D5DB;
-            margin:6px auto 0 auto;
-            box-sizing:border-box;
-        "></div>
-        """
+                    <div style="
+                        width:16px;
+                        height:16px;
+                        border-radius:50%;
+                        border:2px solid #D1D5DB;
+                        margin:6px auto 0 auto;
+                        box-sizing:border-box;
+                    "></div>
+                    """
 
                 # Tarjeta visual
-                contenido_tarjeta = dedent(f"""
-        <div style="
-            background-color:{fondo_tarjeta};
-            border:2px solid {borde_tarjeta};
-            border-radius:10px;
-            padding:10px 4px;
-            text-align:center;
-            min-height:130px;
-            box-sizing:border-box;
-            display:flex;
-            flex-direction:column;
-            justify-content:space-between;
-            box-shadow:{sombra_tarjeta};
-            pointer-events:none;
-        ">
-            <div>
-                {svg_iconos[i]}
-
+                contenido_tarjeta = f"""
                 <div style="
-                    font-size:12px;
-                    font-weight:600;
-                    color:#374151;
-                    line-height:1.2;
+                    background-color:{fondo_tarjeta};
+                    border:2px solid {borde_tarjeta};
+                    border-radius:10px;
+                    padding:10px 4px;
+                    text-align:center;
+                    min-height:130px;
+                    box-sizing:border-box;
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:space-between;
+                    box-shadow:{sombra_tarjeta};
+                    pointer-events:none;
                 ">
-                    {opcion}
+
+                    <div>
+                        {svg_iconos[i]}
+
+                        <div style="
+                            font-size:12px;
+                            font-weight:600;
+                            color:#374151;
+                            line-height:1.2;
+                        ">
+                            {opcion}
+                        </div>
+                    </div>
+
+                    <div>
+                        {radio_html}
+                    </div>
+
                 </div>
-            </div>
-
-            <div>
-                {radio_html}
-            </div>
-        </div>
-        """).strip()
-
+                """
+                
                 # Botón real de Streamlit
                 if st.button(
                     "",
@@ -489,20 +490,19 @@ def mostrar_cuestionario():
                 ):
                     st.session_state.respuestas[pregunta["codigo"]] = opcion
                     st.rerun()
-
-                # Mostrar la tarjeta encima del botón
-                tarjeta_superpuesta = dedent(f"""
-        <div style="
-            margin-top:-130px;
-            position:relative;
-            z-index:2;
-            pointer-events:none;
-        ">{contenido_tarjeta}
-        </div>
-        """).strip()
-
+                
+                # Mostrar la tarjeta sobre el botón
                 st.markdown(
-                    tarjeta_superpuesta,
+                    f"""
+                    <div style="
+                        margin-top:-130px;
+                        position:relative;
+                        z-index:2;
+                        pointer-events:none;
+                    ">
+                        {contenido_tarjeta}
+                    </div>
+                    """,
                     unsafe_allow_html=True
                 )
 
