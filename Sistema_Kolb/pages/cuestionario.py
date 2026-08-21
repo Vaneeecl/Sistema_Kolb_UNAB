@@ -133,13 +133,6 @@ opciones = [
     "No me identifica"
 ]
 
-svg_iconos = [
-    '''<div style="width: 38px; height: 38px; border-radius: 50%; background: #FFF8F2; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px auto; border: 1px solid #F2E6D9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>''',
-    '''<div style="width: 38px; height: 38px; border-radius: 50%; background: #FFF8F2; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px auto; border: 1px solid #F2E6D9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>''',
-    '''<div style="width: 38px; height: 38px; border-radius: 50%; background: #FFF8F2; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px auto; border: 1px solid #F2E6D9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg></div>''',
-    '''<div style="width: 38px; height: 38px; border-radius: 50%; background: #FFF8F2; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px auto; border: 1px solid #F2E6D9;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></div>'''
-]
-
 # ==========================================================
 # INICIALIZAR SESSION STATE
 # ==========================================================
@@ -238,20 +231,133 @@ def mostrar_cuestionario():
             margin-top: 12px;
             margin-bottom: 8px;
         }
-        div[data-testid="column"] .stButton button {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            width: 100%;
-            height: 100%;
-            min-height: 130px;
-            border-radius: 10px;
-            padding: 0px;
+
+        /* ==========================================================
+           TARJETAS DE RESPUESTA DEL CUESTIONARIO
+           ========================================================== */
+        /* Contenedor de las cuatro opciones */
+        div[data-testid="stRadio"] div[role="radiogroup"] {
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 12px !important;
+            width: 100% !important;
+            align-items: stretch !important;
+            justify-content: stretch !important;
         }
-        div[data-testid="column"] .stButton button:hover {
-            background: rgba(245, 130, 32, 0.04);
-            border: none;
+        /* Cada opción se convierte en una tarjeta */
+        div[data-testid="stRadio"] div[role="radiogroup"] > label {
+            flex: 1 1 0 !important;
+            width: 25% !important;
+            min-width: 0 !important;
+            min-height: 125px !important;
+
+            padding: 16px 12px 12px 12px !important;
+            margin: 0 !important;
+
+            background: #FFFFFF !important;
+            border: 1px solid #E5E7EB !important;
+            border-radius: 10px !important;
+
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            box-sizing: border-box !important;
         }
+        /* Efecto al pasar el cursor */
+        div[data-testid="stRadio"] div[role="radiogroup"] > label:hover {
+            border-color: #F58220 !important;
+            background: #FFF8F2 !important;
+        }
+        /* Círculo real de Streamlit */
+        div[data-testid="stRadio"] div[role="radiogroup"] > label input[type="radio"] {
+            accent-color: #F58220 !important;
+            width: 18px !important;
+            height: 18px !important;
+            margin: 8px 0 0 0 !important;
+            cursor: pointer !important;
+        }
+        /* Texto de cada opción */
+        div[data-testid="stRadio"] div[role="radiogroup"] > label p {
+            color: #1F2D4D !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+            line-height: 1.3 !important;
+            margin: 0 !important;
+        }
+        /* Tarjeta seleccionada */
+        div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input[type="radio"]:checked) {
+            border: 2px solid #F58220 !important;
+            background: #FFF8F2 !important;
+            box-shadow: 0 3px 8px rgba(245, 130, 32, 0.12) !important;
+        }
+
+        /* ==========================================================
+           ICONOS DE LAS CUATRO OPCIONES
+           ========================================================== */
+        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(1)::before {
+            content: "◎";
+            width: 34px;
+            height: 34px;
+            border: 1px solid #F2E6D9;
+            border-radius: 50%;
+            background: #FFF8F2;
+            color: #F58220;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(2)::before {
+            content: "☆";
+            width: 34px;
+            height: 34px;
+            border: 1px solid #F2E6D9;
+            border-radius: 50%;
+            background: #FFF8F2;
+            color: #F58220;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(3)::before {
+            content: "☺";
+            width: 34px;
+            height: 34px;
+            border: 1px solid #F2E6D9;
+            border-radius: 50%;
+            background: #FFF8F2;
+            color: #F58220;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(4)::before {
+            content: "×";
+            width: 34px;
+            height: 34px;
+            border: 1px solid #F2E6D9;
+            border-radius: 50%;
+            background: #FFF8F2;
+            color: #F58220;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
         div[data-testid="stHorizontalBlock"] > div:not(:nth-child(2)) .stButton button {
             min-height: 42px !important;
             height: 42px !important;
@@ -384,45 +490,27 @@ def mostrar_cuestionario():
         st.markdown('<div class="pregunta-pregunta">¿Qué tanto te identifica esta afirmación?</div>', unsafe_allow_html=True)
 
         # ==========================================================
-        # TARJETAS DE OPCIONES INTERACTIVAS
+        # OPCIONES DE RESPUESTA (RADIO HORIZONTAL CON ESTILO DE TARJETAS)
         # ==========================================================
-        respuesta_actual = st.session_state.respuestas.get(pregunta["codigo"], None)
+        respuesta_actual = st.session_state.respuestas.get(
+            pregunta["codigo"],
+            None
+        )
         
-        cols = st.columns(4)
+        indice_inicial = opciones.index(respuesta_actual) if respuesta_actual in opciones else None
 
-        for i, opcion in enumerate(opciones):
-            with cols[i]:
-                seleccionado = (respuesta_actual == opcion)
-                
-                borde_tarjeta = "#F58220" if seleccionado else "#E5E7EB"
-                fondo_tarjeta = "#FFF8F2" if seleccionado else "#FFFFFF"
-                sombra_tarjeta = "0 3px 10px rgba(245, 130, 32, 0.12)" if seleccionado else "none"
-                
-                radio_html = (
-                    '''<div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #F58220; display: flex; align-items: center; justify-content: center; margin: 6px auto 0 auto;"><div style="width: 8px; height: 8px; border-radius: 50%; background: #F58220;"></div></div>'''
-                    if seleccionado else
-                    '''<div style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D1D5DB; margin: 6px auto 0 auto;"></div>'''
-                )
+        seleccion = st.radio(
+            "Selecciona una opción:",
+            opciones,
+            index=indice_inicial,
+            key=f"respuesta_{indice}",
+            horizontal=True,
+            label_visibility="collapsed",
+            width="stretch"
+        )
 
-                contenido_tarjeta = f"""
-                <div style="background-color: {fondo_tarjeta}; border: 2px solid {borde_tarjeta}; border-radius: 10px; padding: 10px 4px; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: space-between; box-shadow: {sombra_tarjeta};">
-                    <div>
-                        {svg_iconos[i]}
-                        <div style="font-size: 12px; font-weight: 600; color: #374151; line-height: 1.2;">
-                            {opcion}
-                        </div>
-                    </div>
-                    <div>
-                        {radio_html}
-                    </div>
-                </div>
-                """
-                
-                if st.button(opcion, key=f"card_btn_{indice}_{i}", help="Haz clic para seleccionar"):
-                    st.session_state.respuestas[pregunta["codigo"]] = opcion
-                    st.rerun()
-                
-                st.markdown(f"<div style='margin-top: -130px; pointer-events: none;'>{contenido_tarjeta}</div>", unsafe_allow_html=True)
+        if seleccion:
+            st.session_state.respuestas[pregunta["codigo"]] = seleccion
 
         st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
