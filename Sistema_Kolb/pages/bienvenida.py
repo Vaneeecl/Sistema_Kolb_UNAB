@@ -39,7 +39,7 @@ def mostrar_bienvenida():
                     color:#1F2D4D;
                     font-size:27px;
                     font-weight:800;">
-                    Sistema de Apoyo a la Clasificación del Estilo de Aprendizaje según el Modelo de Kolb 
+                    Prototipo de aplicación para predecir estilos de aprendizaje de Kolb en estudiantes de ecuaciones diferenciales
                 </span>
                 <span style="
                     color:#F58220;
