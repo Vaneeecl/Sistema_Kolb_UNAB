@@ -69,9 +69,9 @@ def render_stepper():
         activo = i <= 4
         color = "#F58220" if activo else "#E5E7EB"
         color_texto = "#1F2D4D" if i == 4 else "#6B7280"
-        
+
         html += f'<div style="display:flex;flex-direction:column;align-items:center;"><div style="width:32px;height:32px;border-radius:50%;background:{color};color:white;display:flex;align-items:center;justify-content:center;font-weight:700;">{i}</div><div style="margin-top:6px;font-size:12px;color:{color_texto};font-weight:700;">{paso}</div></div>'
-        
+
         if i < 4:
             html += '<div style="flex:1;height:3px;background:#F58220;margin:0 10px 22px 10px;"></div>'
 
@@ -83,7 +83,6 @@ def render_stepper():
 
 st.markdown("""
 <style>
-/* Forzar altura fija y homogénea en los contenedores principales de las 3 columnas */
 [data-testid="column"] > div {
     height: 100%;
 }
@@ -121,52 +120,240 @@ def mostrar_recomendaciones():
     estilo = st.session_state.get("resultado", "Divergente")
 
     recomendaciones = {
+
+        # =====================================================
+        # ESTILO DIVERGENTE
+        # =====================================================
+
         "Divergente": {
+
             "descripcion": "Como aprendiz divergente, te beneficias al conectar la teoría con experiencias reales y analizar los problemas desde diferentes perspectivas.",
+
             "estrategias": [
-                ("Aprendizaje colaborativo", "Participa en discusiones grupales, debates y trabajo en equipo. Compartir ideas y escuchar diferentes puntos de vista enriquece tu comprensión.", ICON_TEAM),
-                ("Estudio de casos reales", "Analiza situaciones reales donde se apliquen las Ecuaciones Diferenciales. Relacionar la teoría con contextos reales facilitará tu aprendizaje.", ICON_SEARCH),
-                ("Mapas conceptuales", "Organiza la información visualmente. Los mapas conceptuales te ayudan a relacionar conceptos y ver el panorama completo.", ICON_MAP),
-                ("Reflexión y síntesis", "Después de cada tema, sintetiza lo aprendido con tus propias palabras y reflexiona sobre cómo aplicarlo a nuevas situaciones.", ICON_NOTE)
+                (
+                    "Aprendizaje colaborativo",
+                    "Participa en discusiones grupales, debates y trabajo en equipo. Compartir ideas y escuchar diferentes puntos de vista enriquece tu comprensión.",
+                    ICON_TEAM
+                ),
+                (
+                    "Estudio de casos reales",
+                    "Analiza situaciones reales donde se apliquen las Ecuaciones Diferenciales. Relacionar la teoría con contextos reales facilitará tu aprendizaje.",
+                    ICON_SEARCH
+                ),
+                (
+                    "Mapas conceptuales",
+                    "Organiza la información visualmente. Los mapas conceptuales te ayudan a relacionar conceptos y ver el panorama completo.",
+                    ICON_MAP
+                ),
+                (
+                    "Reflexión y síntesis",
+                    "Después de cada tema, sintetiza lo aprendido con tus propias palabras y reflexiona sobre cómo aplicarlo a nuevas situaciones.",
+                    ICON_NOTE
+                )
             ],
+
             "recursos": [
-                ("Video: Aplicaciones reales de Ecuaciones Diferenciales", "Conexión entre teoría y práctica\n12 min", ICON_PLAY),
-                ("Artículo: Modelos diferenciales en la vida real", "Ejemplos y aplicaciones\nPDF - 8 pág.", ICON_DOC),
-                ("Actividad interactiva", "Explora escenarios y toma decisiones\nInteractivo", ICON_INTERACTIVE),
-                ("Guía de ejercicios contextualizados", "Problemas aplicados a situaciones reales\nPDF - 15 pág.", ICON_BOOK)
+                (
+                    "Video: Visión geométrica de las ecuaciones diferenciales",
+                    "Visualización del comportamiento de las soluciones.",
+                    ICON_PLAY,
+                    "https://www.ocw.mit.edu/courses/18-03-differential-equations-spring-2010/video_galleries/video-lectures/"
+                ),
+                (
+                    "Artículo: Introducción a las ecuaciones diferenciales",
+                    "Conceptos y aplicaciones de las ecuaciones diferenciales.",
+                    ICON_DOC,
+                    "https://www.open.edu/openlearn/science-maths-technology/introduction-differential-equations/content-section-0"
+                ),
+                (
+                    "Actividad interactiva: Campo de pendientes",
+                    "Explora visualmente las soluciones de una ecuación diferencial.",
+                    ICON_INTERACTIVE,
+                    "https://www.geogebra.org/m/ggWUWEZe"
+                ),
+                (
+                    "Guía de ejercicios: Problem Sets",
+                    "Problemas de ecuaciones diferenciales para reforzar el análisis.",
+                    ICON_BOOK,
+                    "https://www.ocw.mit.edu/courses/18-03-differential-equations-spring-2010/pages/assignments/"
+                )
             ]
         },
+
+        # =====================================================
+        # ESTILO ASIMILADOR
+        # =====================================================
+
         "Asimilador": {
+
             "descripcion": "Tu estilo de aprendizaje se caracteriza por comprender mejor modelos teóricos y conceptos abstractos estructurados.",
+
             "estrategias": [
-                ("Mapas conceptuales", "Utilizar mapas conceptuales antes de resolver ejercicios.", ICON_MAP),
-                ("Resúmenes teóricos", "Construir resúmenes de cada tema trabajado y analizar demostraciones.", ICON_NOTE)
+                (
+                    "Mapas conceptuales",
+                    "Utiliza mapas conceptuales antes de resolver ejercicios para relacionar los conceptos principales.",
+                    ICON_MAP
+                ),
+                (
+                    "Resúmenes teóricos",
+                    "Construye resúmenes de cada tema trabajado y analiza las relaciones entre conceptos y procedimientos.",
+                    ICON_NOTE
+                ),
+                (
+                    "Organización conceptual",
+                    "Clasifica los métodos de solución y establece relaciones entre sus características y aplicaciones.",
+                    ICON_BOOK
+                ),
+                (
+                    "Análisis de procedimientos",
+                    "Compara diferentes métodos de solución para identificar sus ventajas y condiciones de aplicación.",
+                    ICON_SEARCH
+                )
             ],
+
             "recursos": [
-                ("Libros teóricos avanzados", "Explicaciones conceptuales profundas", ICON_BOOK),
-                ("Artículos académicos", "Presentaciones organizadas", ICON_DOC)
+                (
+                    "Video: Clases de Differential Equations",
+                    "Explicaciones estructuradas sobre conceptos y métodos.",
+                    ICON_PLAY,
+                    "https://www.ocw.mit.edu/courses/18-03-differential-equations-spring-2010/video_galleries/video-lectures/"
+                ),
+                (
+                    "Artículo: Introducción a las ecuaciones diferenciales",
+                    "Material estructurado sobre métodos y aplicaciones.",
+                    ICON_DOC,
+                    "https://www.open.edu/openlearn/science-maths-technology/introduction-differential-equations/content-section-0"
+                ),
+                (
+                    "Actividad interactiva: Campo de pendientes",
+                    "Relaciona la representación gráfica con el comportamiento de las soluciones.",
+                    ICON_INTERACTIVE,
+                    "https://www.geogebra.org/m/qYENU3ZB"
+                ),
+                (
+                    "Guía: Lecture Notes",
+                    "Notas de clase sobre conceptos y métodos de ecuaciones diferenciales.",
+                    ICON_BOOK,
+                    "https://www.ocw.mit.edu/courses/18-03-differential-equations-spring-2010/resources/lecture-notes/"
+                )
             ]
         },
+
+        # =====================================================
+        # ESTILO CONVERGENTE
+        # =====================================================
+
         "Convergente": {
+
             "descripcion": "Te orientas hacia la aplicación práctica del conocimiento y la resolución eficiente de problemas técnicos.",
+
             "estrategias": [
-                ("Práctica constante", "Resolver numerosos ejercicios paso a paso.", ICON_SEARCH),
-                ("Proyectos técnicos", "Desarrollar proyectos prácticos de ingeniería.", ICON_TEAM)
+                (
+                    "Práctica constante",
+                    "Resuelve ejercicios paso a paso para consolidar los procedimientos de solución.",
+                    ICON_SEARCH
+                ),
+                (
+                    "Proyectos técnicos",
+                    "Desarrolla problemas aplicados de ingeniería que requieran utilizar ecuaciones diferenciales.",
+                    ICON_TEAM
+                ),
+                (
+                    "Comprobación de resultados",
+                    "Verifica las soluciones obtenidas y analiza si responden adecuadamente al problema planteado.",
+                    ICON_NOTE
+                ),
+                (
+                    "Aplicación de métodos",
+                    "Selecciona el método de solución más adecuado según las características de cada ecuación.",
+                    ICON_BOOK
+                )
             ],
+
             "recursos": [
-                ("Laboratorios de código", "Prácticas con MATLAB o Python", ICON_INTERACTIVE),
-                ("Talleres numéricos", "Resolución de problemas aplicados", ICON_BOOK)
+                (
+                    "Video: Método numérico de Euler",
+                    "Resolución y aplicación de un método numérico.",
+                    ICON_PLAY,
+                    "https://www.ocw.mit.edu/courses/18-03-differential-equations-spring-2010/video_galleries/video-lectures/"
+                ),
+                (
+                    "Artículo: Lecture Notes de Differential Equations",
+                    "Métodos analíticos, gráficos y numéricos.",
+                    ICON_DOC,
+                    "https://www.ocw.mit.edu/courses/18-03-differential-equations-spring-2010/pages/lecture-notes/"
+                ),
+                (
+                    "Actividad interactiva: Método de Euler",
+                    "Modifica parámetros y observa el comportamiento de la aproximación.",
+                    ICON_INTERACTIVE,
+                    "https://www.geogebra.org/m/pcnda2e3"
+                ),
+                (
+                    "Guía de ejercicios: Assignments",
+                    "Ejercicios y problemas de aplicación de ecuaciones diferenciales.",
+                    ICON_BOOK,
+                    "https://www.ocw.mit.edu/courses/18-03-differential-equations-spring-2010/pages/assignments/"
+                )
             ]
         },
+
+        # =====================================================
+        # ESTILO ACOMODADOR
+        # =====================================================
+
         "Acomodador": {
+
             "descripcion": "Prefieres aprender haciendo mediante actividades prácticas, experimentales y dinámicas.",
+
             "estrategias": [
-                ("Ensayo y error", "Aprender mediante retos prácticos.", ICON_SEARCH),
-                ("Proyectos de aula", "Participar activamente en dinámicas grupales.", ICON_TEAM)
+                (
+                    "Ensayo y error",
+                    "Aprende mediante retos prácticos en los que puedas probar diferentes procedimientos y comparar resultados.",
+                    ICON_SEARCH
+                ),
+                (
+                    "Proyectos de aula",
+                    "Participa activamente en actividades y proyectos relacionados con situaciones reales.",
+                    ICON_TEAM
+                ),
+                (
+                    "Experimentación",
+                    "Modifica condiciones y parámetros para observar directamente cómo cambia el comportamiento de una solución.",
+                    ICON_INTERACTIVE
+                ),
+                (
+                    "Resolución de problemas",
+                    "Aplica los conceptos aprendidos a situaciones concretas y contextualizadas.",
+                    ICON_BOOK
+                )
             ],
+
             "recursos": [
-                ("Software interactivo", "Simuladores visuales", ICON_INTERACTIVE),
-                ("Aprendizaje basado en problemas", "Casos prácticos reales", ICON_BOOK)
+                (
+                    "Video: Métodos gráficos y numéricos",
+                    "Explora diferentes formas de aproximar y visualizar soluciones.",
+                    ICON_PLAY,
+                    "https://opencw.aprende.org/resources/res-18-009-learn-differential-equations-up-close-with-gilbert-strang-and-cleve-moler-fall-2015/differential-equations-and-linear-algebra/"
+                ),
+                (
+                    "Artículo: Aplicaciones de las ecuaciones diferenciales",
+                    "Ejemplos de utilización de ecuaciones diferenciales en diferentes contextos.",
+                    ICON_DOC,
+                    "https://www.open.edu/openlearn/science-maths-technology/introduction-differential-equations/content-section-0"
+                ),
+                (
+                    "Actividad interactiva: Explorando una EDO",
+                    "Modifica condiciones iniciales y observa el campo direccional y la solución.",
+                    ICON_INTERACTIVE,
+                    "https://www.geogebra.org/m/dQM1cKDe"
+                ),
+                (
+                    "Guía: Recitations",
+                    "Problemas prácticos sobre modelos y métodos de ecuaciones diferenciales.",
+                    ICON_BOOK,
+                    "https://opencw.aprende.org/courses/mathematics/18-03-differential-equations-spring-2010/recitations/"
+                )
             ]
         }
     }
@@ -199,13 +386,13 @@ def mostrar_recomendaciones():
     # Columna 1: Estilo Identificado
     with col1:
         with st.container(border=True):
-            st.markdown("""
+            st.markdown(f"""
             <div style="text-align: center; display: flex; flex-direction: column; justify-content: center; height: 100%; padding: 10px 0;">
                 <div style="font-size: 11px; font-weight: 700; color: #6B7280; letter-spacing: 0.5px; margin-bottom: 10px;">
                     TU ESTILO DE APRENDIZAJE
                 </div>
                 <div style="font-size: 30px; font-weight: 900; color: #F58220; margin-bottom: 20px; letter-spacing: -0.5px;">
-                    DIVERGENTE
+                    {estilo.upper()}
                 </div>
                 <div style="background: #FFF8F2; border-radius: 50%; width: 130px; height: 130px; margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center; border: 1px solid #FDEEE1;">
                     <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -214,13 +401,13 @@ def mostrar_recomendaciones():
                     </svg>
                 </div>
                 <div style="font-size: 11px; font-weight: 700; color: #6B7280; margin-bottom: 4px;">
-                    CONFIANZA DEL MODELO
+                    PROBABILIDAD ESTIMADA
                 </div>
                 <div style="font-size: 30px; font-weight: 800; color: #10B981; margin-bottom: 4px;">
                     90%
                 </div>
                 <div style="font-size: 13px; color: #10B981; font-weight: 600;">
-                    ✓ Alta confianza
+                    ✓ Resultado orientativo
                 </div>
             </div>
             """, unsafe_allow_html=True)
@@ -257,24 +444,33 @@ def mostrar_recomendaciones():
                 <div style="background: #FFF6ED; padding: 8px; border-radius: 8px; display: flex;">{ICON_BOOK}</div>
                 <h3 style="margin: 0; font-size: 18px; font-weight: 800; color: #1F2D4D;">Recursos recomendados</h3>
             </div>
-            <p style="color: #4B5563; font-size: 13.5px; line-height: 1.5; margin-bottom: 16px;">
-                Material seleccionado para complementar tu proceso de estudio.
+            <p style="color:#4B5563; font-size:13.5px; line-height:1.5; margin-bottom:16px;">
+                Materiales externos seleccionados para complementar tu proceso de aprendizaje en Ecuaciones Diferenciales.
             </p>
             """, unsafe_allow_html=True)
 
-            for titulo, desc, icono in datos["recursos"]:
-                desc_html = desc.replace("\n", "<br>")
-                st.markdown(f"""
-                <div class="sub-card">
-                    <div style="display: flex; align-items: flex-start; gap: 10px;">
-                        <div style="display: flex; align-items: center; margin-top: 2px;">{icono}</div>
-                        <div>
-                            <div style="font-weight: 700; color: #1F2D4D; font-size: 13.5px; margin-bottom: 2px;">{titulo}</div>
-                            <div style="color: #6B7280; font-size: 12.5px; line-height: 1.4;">{desc_html}</div>
-                        </div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
+            for titulo, desc, icono, url in datos["recursos"]:
+                # IMPORTANTE: todo el HTML va en una sola línea (sin saltos de línea
+                # ni indentación interna). textwrap.dedent() NO garantiza dejar todas
+                # las líneas en 0 espacios cuando hay niveles de anidación distintos,
+                # y Markdown convierte en "bloque de código" cualquier línea que quede
+                # con 4+ espacios de indentación, lo que hacía que el HTML se mostrara
+                # como texto crudo en vez de renderizarse.
+                html_recurso = (
+                    '<div class="sub-card">'
+                    '<div style="display:flex; align-items:flex-start; gap:10px;">'
+                    f'<div style="display:flex; align-items:center; margin-top:2px;">{icono}</div>'
+                    '<div>'
+                    f'<div style="font-weight:700; color:#1F2D4D; font-size:13.5px; margin-bottom:3px;">'
+                    f'<a href="{url}" target="_blank" style="color:#1F2D4D; text-decoration:none;">{titulo}</a>'
+                    '</div>'
+                    f'<div style="color:#6B7280; font-size:12.5px; line-height:1.4; margin-bottom:5px;">{desc}</div>'
+                    f'<a href="{url}" target="_blank" style="color:#F58220; font-size:11.5px; font-weight:700; text-decoration:none;">↗ Abrir recurso</a>'
+                    '</div>'
+                    '</div>'
+                    '</div>'
+                )
+                st.markdown(html_recurso, unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
