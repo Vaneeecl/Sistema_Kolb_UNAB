@@ -10,116 +10,141 @@ preguntas = [
         "codigo": "EC2",
         "dimension": "Experiencia Concreta (EC)",
         "titulo": "RECEPTIVAMENTE",
-        "texto": "Estoy concentrado plenamente en lo que sucede y disponible para recoger la mayor cantidad de elementos posible."
+        "texto": (
+            "Estoy concentrado plenamente en lo que sucede y disponible para"
+            " recoger la mayor cantidad de elementos posible."
+        ),
     },
     {
         "codigo": "EC3",
         "dimension": "Experiencia Concreta (EC)",
         "titulo": "SINTIENDO",
-        "texto": "Pongo atención a lo que siento espontáneamente y a lo que soy dentro de la situación."
+        "texto": (
+            "Pongo atención a lo que siento espontáneamente y a lo que soy"
+            " dentro de la situación."
+        ),
     },
     {
         "codigo": "EC4",
         "dimension": "Experiencia Concreta (EC)",
         "titulo": "ACEPTANDO",
-        "texto": "Acepto la situación tal como se presenta y procuro adaptarme a ella."
+        "texto": (
+            "Acepto la situación tal como se presenta y procuro adaptarme a"
+            " ella."
+        ),
     },
     {
         "codigo": "EC5",
         "dimension": "Experiencia Concreta (EC)",
         "titulo": "INTUITIVAMENTE",
-        "texto": "Confío en mis intuiciones y primeras impresiones para comprender una situación."
+        "texto": (
+            "Confío en mis intuiciones y primeras impresiones para comprender"
+            " una situación."
+        ),
     },
     {
         "codigo": "EC7",
         "dimension": "Experiencia Concreta (EC)",
         "titulo": "EXPERIMENTANDO",
-        "texto": "Prefiero aprender involucrándome directamente en la experiencia."
+        "texto": "Prefiero aprender involucrándome directamente en la experiencia.",
     },
     {
         "codigo": "EC8",
         "dimension": "Experiencia Concreta (EC)",
         "titulo": "VIVIENDO",
-        "texto": "Aprendo mejor cuando participo activamente en las situaciones."
+        "texto": "Aprendo mejor cuando participo activamente en las situaciones.",
     },
     {
         "codigo": "OR1",
         "dimension": "Observación Reflexiva (OR)",
         "titulo": "OBSERVANDO",
-        "texto": "Analizo cuidadosamente lo que ocurre antes de sacar conclusiones."
+        "texto": (
+            "Analizo cuidadosamente lo que ocurre antes de sacar conclusiones."
+        ),
     },
     {
         "codigo": "OR2",
         "dimension": "Observación Reflexiva (OR)",
         "titulo": "REFLEXIONANDO",
-        "texto": "Prefiero pensar detenidamente sobre una experiencia antes de actuar."
+        "texto": (
+            "Prefiero pensar detenidamente sobre una experiencia antes de"
+            " actuar."
+        ),
     },
     {
         "codigo": "OR3",
         "dimension": "Observación Reflexiva (OR)",
         "titulo": "ESCUCHANDO",
-        "texto": "Aprendo observando y escuchando a los demás."
+        "texto": "Aprendo observando y escuchando a los demás.",
     },
     {
         "codigo": "OR5",
         "dimension": "Observación Reflexiva (OR)",
         "titulo": "ANALIZANDO",
-        "texto": "Me gusta revisar diferentes perspectivas antes de tomar decisiones."
+        "texto": (
+            "Me gusta revisar diferentes perspectivas antes de tomar"
+            " decisiones."
+        ),
     },
     {
         "codigo": "OR7",
         "dimension": "Observación Reflexiva (OR)",
         "titulo": "PENSANDO",
-        "texto": "Dedico tiempo a comprender una situación antes de intervenir."
+        "texto": "Dedico tiempo a comprender una situación antes de intervenir.",
     },
     {
         "codigo": "CA1",
         "dimension": "Conceptualización Abstracta (CA)",
         "titulo": "RAZONANDO",
-        "texto": "Prefiero organizar las ideas mediante conceptos y teorías."
+        "texto": "Prefiero organizar las ideas mediante conceptos y teorías.",
     },
     {
         "codigo": "CA3",
         "dimension": "Conceptualización Abstracta (CA)",
         "titulo": "LÓGICAMENTE",
-        "texto": "Me siento cómodo utilizando el razonamiento lógico para aprender."
+        "texto": (
+            "Me siento cómodo utilizando el razonamiento lógico para"
+            " aprender."
+        ),
     },
     {
         "codigo": "CA5",
         "dimension": "Conceptualización Abstracta (CA)",
         "titulo": "TEORIZANDO",
-        "texto": "Disfruto comprender los principios que explican una situación."
+        "texto": "Disfruto comprender los principios que explican una situación.",
     },
     {
         "codigo": "EA1",
         "dimension": "Experimentación Activa (EA)",
         "titulo": "ACTUANDO",
-        "texto": "Prefiero poner rápidamente en práctica las ideas."
+        "texto": "Prefiero poner rápidamente en práctica las ideas.",
     },
     {
         "codigo": "EA2",
         "dimension": "Experimentación Activa (EA)",
         "titulo": "HACIENDO",
-        "texto": "Aprendo mejor cuando realizo actividades prácticas."
+        "texto": "Aprendo mejor cuando realizo actividades prácticas.",
     },
     {
         "codigo": "EA7",
         "dimension": "Experimentación Activa (EA)",
         "titulo": "APLICANDO",
-        "texto": "Me gusta comprobar inmediatamente si una idea funciona."
+        "texto": "Me gusta comprobar inmediatamente si una idea funciona.",
     },
     {
         "codigo": "EA8",
         "dimension": "Experimentación Activa (EA)",
         "titulo": "EJECUTANDO",
-        "texto": "Prefiero aprender realizando tareas concretas."
+        "texto": "Prefiero aprender realizando tareas concretas.",
     },
     {
         "codigo": "EA9",
         "dimension": "Experimentación Activa (EA)",
         "titulo": "PRACTICANDO",
-        "texto": "Consolido mi aprendizaje cuando puedo practicar lo aprendido."
-    }
+        "texto": (
+            "Consolido mi aprendizaje cuando puedo practicar lo aprendido."
+        ),
+    },
 ]
 
 # ==========================================================
@@ -130,7 +155,7 @@ opciones = [
     "Me identifica totalmente",
     "Me identifica con frecuencia",
     "Me identifica poco",
-    "No me identifica"
+    "No me identifica",
 ]
 
 # ==========================================================
@@ -138,25 +163,27 @@ opciones = [
 # ==========================================================
 
 if "pregunta_actual" not in st.session_state:
-    st.session_state.pregunta_actual = 0
+  st.session_state.pregunta_actual = 0
 
-if "respuestas" not in st.session_state or not isinstance(st.session_state.respuestas, dict):
-    st.session_state.respuestas = {}
+if "respuestas" not in st.session_state or not isinstance(
+    st.session_state.respuestas, dict
+):
+  st.session_state.respuestas = {}
+
 
 # ==========================================================
 # FUNCIÓN PRINCIPAL
 # ==========================================================
-
 def mostrar_cuestionario():
-    indice = st.session_state.pregunta_actual
-    pregunta = preguntas[indice]
-    porcentaje = int(((indice + 1) / len(preguntas)) * 100)
+  indice = st.session_state.pregunta_actual
+  pregunta = preguntas[indice]
+  porcentaje = int(((indice + 1) / len(preguntas)) * 100)
 
-    # ==========================================================
-    # ESTILOS CSS
-    # ==========================================================
-    st.markdown(
-        """
+  # ==========================================================
+  # ESTILOS CSS REPARADOS PARA TARJETAS RADIO
+  # ==========================================================
+  st.markdown(
+      """
         <style>
         .block-container {
             padding-top: 1rem;
@@ -233,132 +260,51 @@ def mostrar_cuestionario():
         }
 
         /* ==========================================================
-           TARJETAS DE RESPUESTA DEL CUESTIONARIO
-           ========================================================== */
-        /* Contenedor de las cuatro opciones */
-        div[data-testid="stRadio"] div[role="radiogroup"] {
-            display: flex !important;
-            flex-direction: row !important;
+            TARJETAS DE RESPUESTA DEL CUESTIONARIO (CORREGIDO)
+            ========================================================== */
+        div[data-testid="stRadio"] [role="radiogroup"] {
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important;
             gap: 12px !important;
             width: 100% !important;
-            align-items: stretch !important;
-            justify-content: stretch !important;
         }
-        /* Cada opción se convierte en una tarjeta */
-        div[data-testid="stRadio"] div[role="radiogroup"] > label {
-            flex: 1 1 0 !important;
-            width: 25% !important;
-            min-width: 0 !important;
-            min-height: 125px !important;
-
-            padding: 16px 12px 12px 12px !important;
-            margin: 0 !important;
-
+        div[data-testid="stRadio"] [role="radiogroup"] > label {
             background: #FFFFFF !important;
             border: 1px solid #E5E7EB !important;
             border-radius: 10px !important;
-
+            padding: 16px 10px !important;
+            margin: 0 !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
             text-align: center !important;
-
             cursor: pointer !important;
             transition: all 0.2s ease !important;
-            box-sizing: border-box !important;
+            min-height: 130px !important;
         }
-        /* Efecto al pasar el cursor */
-        div[data-testid="stRadio"] div[role="radiogroup"] > label:hover {
+        div[data-testid="stRadio"] [role="radiogroup"] > label:hover {
             border-color: #F58220 !important;
             background: #FFF8F2 !important;
         }
-        /* Círculo real de Streamlit */
-        div[data-testid="stRadio"] div[role="radiogroup"] > label input[type="radio"] {
+        div[data-testid="stRadio"] [role="radiogroup"] > label input[type="radio"] {
             accent-color: #F58220 !important;
-            width: 18px !important;
-            height: 18px !important;
-            margin: 8px 0 0 0 !important;
+            margin-top: 6px !important;
             cursor: pointer !important;
         }
-        /* Texto de cada opción */
-        div[data-testid="stRadio"] div[role="radiogroup"] > label p {
-            color: #1F2D4D !important;
-            font-size: 13px !important;
-            font-weight: 600 !important;
-            text-align: center !important;
-            line-height: 1.3 !important;
-            margin: 0 !important;
-        }
-        /* Tarjeta seleccionada */
-        div[data-testid="stRadio"] div[role="radiogroup"] > label:has(input[type="radio"]:checked) {
+        div[data-testid="stRadio"] [role="radiogroup"] > label:has(input[type="radio"]:checked) {
             border: 2px solid #F58220 !important;
             background: #FFF8F2 !important;
             box-shadow: 0 3px 8px rgba(245, 130, 32, 0.12) !important;
         }
 
-        /* ==========================================================
-           ICONOS DE LAS CUATRO OPCIONES
-           ========================================================== */
-        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(1)::before {
-            content: "◎";
-            width: 34px;
-            height: 34px;
-            border: 1px solid #F2E6D9;
-            border-radius: 50%;
-            background: #FFF8F2;
-            color: #F58220;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 21px;
-            margin-bottom: 8px;
-        }
-        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(2)::before {
-            content: "☆";
-            width: 34px;
-            height: 34px;
-            border: 1px solid #F2E6D9;
-            border-radius: 50%;
-            background: #FFF8F2;
-            color: #F58220;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 23px;
-            margin-bottom: 8px;
-        }
-        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(3)::before {
-            content: "☺";
-            width: 34px;
-            height: 34px;
-            border: 1px solid #F2E6D9;
-            border-radius: 50%;
-            background: #FFF8F2;
-            color: #F58220;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-        div[data-testid="stRadio"] div[role="radiogroup"] > label:nth-child(4)::before {
-            content: "×";
-            width: 34px;
-            height: 34px;
-            border: 1px solid #F2E6D9;
-            border-radius: 50%;
-            background: #FFF8F2;
-            color: #F58220;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 23px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
+        /* Íconos por posición */
+        div[data-testid="stRadio"] [role="radiogroup"] > label:nth-child(1)::before { content: "◎"; font-size: 20px; color: #F58220; margin-bottom: 6px; }
+        div[data-testid="stRadio"] [role="radiogroup"] > label:nth-child(2)::before { content: "☆"; font-size: 20px; color: #F58220; margin-bottom: 6px; }
+        div[data-testid="stRadio"] [role="radiogroup"] > label:nth-child(3)::before { content: "☺"; font-size: 20px; color: #F58220; margin-bottom: 6px; }
+        div[data-testid="stRadio"] [role="radiogroup"] > label:nth-child(4)::before { content: "×"; font-size: 22px; color: #F58220; margin-bottom: 6px; }
 
-        div[data-testid="stHorizontalBlock"] > div:not(:nth-child(2)) .stButton button {
+        div[data-testid="stHorizontalBlock"] .stButton button {
             min-height: 42px !important;
             height: 42px !important;
             border-radius: 8px !important;
@@ -366,14 +312,14 @@ def mostrar_cuestionario():
         }
         </style>
         """,
-        unsafe_allow_html=True
-    )
+      unsafe_allow_html=True,
+  )
 
-    # ==========================================================
-    # STEPPER SUPERIOR
-    # ==========================================================
-    st.markdown(
-        """
+  # ==========================================================
+  # STEPPER SUPERIOR
+  # ==========================================================
+  st.markdown(
+      """
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding: 0 10px;">
             <div style="text-align:center; flex:1;">
                 <div style="width: 24px; height: 24px; background: #F58220; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: auto; font-size: 10px; font-weight: 700;">✓</div>
@@ -396,20 +342,20 @@ def mostrar_cuestionario():
             </div>
         </div>
         """,
-        unsafe_allow_html=True
-    )
+      unsafe_allow_html=True,
+  )
 
-    # ==========================================================
-    # CONTENEDOR PRINCIPAL
-    # ==========================================================
-    with st.container():
-        st.markdown('<div class="main-card">', unsafe_allow_html=True)
+  # ==========================================================
+  # CONTENEDOR PRINCIPAL
+  # ==========================================================
+  with st.container():
+    st.markdown('<div class="main-card">', unsafe_allow_html=True)
 
-        # Header
-        col_h1, col_h2 = st.columns([5, 2])
-        with col_h1:
-            st.markdown(
-                """
+    # Header
+    col_h1, col_h2 = st.columns([5, 2])
+    with col_h1:
+      st.markdown(
+          """
                 <div style="display: flex; align-items: center; gap: 14px;">
                     <div style="background: #FFF8F2; border: 1px solid #F2E6D9; padding: 12px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
                         <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
@@ -420,16 +366,19 @@ def mostrar_cuestionario():
                     </div>
                 </div>
                 """,
-                unsafe_allow_html=True
-            )
-        with col_h2:
-            st.markdown('<div class="badge-guardado">🔒 Guardado automático</div>', unsafe_allow_html=True)
+          unsafe_allow_html=True,
+      )
+    with col_h2:
+      st.markdown(
+          '<div class="badge-guardado">🔒 Guardado automático</div>',
+          unsafe_allow_html=True,
+      )
 
-        st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
-        # Barra de Progreso
-        st.markdown(
-            f"""
+    # Barra de Progreso
+    st.markdown(
+        f"""
             <div style="display: flex; justify-content: space-between; font-size: 12px; color: #4B5563; margin-bottom: 4px;">
                 <span>Pregunta <b>{indice+1}</b> de <b>{len(preguntas)}</b></span>
                 <span><b>{porcentaje}%</b> completado</span>
@@ -438,28 +387,32 @@ def mostrar_cuestionario():
                 <div style="width: {porcentaje}%; background-color: #F58220; height: 100%; border-radius: 9999px; transition: width 0.4s ease;"></div>
             </div>
             """,
-            unsafe_allow_html=True
-        )
+        unsafe_allow_html=True,
+    )
 
-        st.markdown("<hr style='margin: 12px 0; border: none; border-top: 1px solid #E5E7EB;'>", unsafe_allow_html=True)
+    st.markdown(
+        "<hr style='margin: 12px 0; border: none; border-top: 1px solid"
+        " #E5E7EB;'>",
+        unsafe_allow_html=True,
+    )
 
-        # ==========================================================
-        # NÚMERO DE DIMENSIÓN ACTUAL
-        # ==========================================================
-        if indice < 6:
-            numero_dimension = 1
-        elif indice < 11:
-            numero_dimension = 2
-        elif indice < 14:
-            numero_dimension = 3
-        else:
-            numero_dimension = 4
+    # ==========================================================
+    # NÚMERO DE DIMENSIÓN ACTUAL
+    # ==========================================================
+    if indice < 6:
+      numero_dimension = 1
+    elif indice < 11:
+      numero_dimension = 2
+    elif indice < 14:
+      numero_dimension = 3
+    else:
+      numero_dimension = 4
 
-        # ==========================================================
-        # BANDA SUPERIOR DE DIMENSIONES
-        # ==========================================================
-        st.markdown(
-            f"""
+    # ==========================================================
+    # BANDA SUPERIOR DE DIMENSIONES
+    # ==========================================================
+    st.markdown(
+        f"""
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 <div class="banda-dimension">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -468,12 +421,12 @@ def mostrar_cuestionario():
                 <div style="color: #6B7280; font-size: 11px; text-align: right;">Dimensión {numero_dimension} de 4</div>
             </div>
             """,
-            unsafe_allow_html=True
-        )
+        unsafe_allow_html=True,
+    )
 
-        # Tarjeta de la Afirmación
-        st.markdown(
-            f"""
+    # Tarjeta de la Afirmación
+    st.markdown(
+        f"""
             <div style="background: #FFFDFB; border: 1px solid #F2E6D9; border-radius: 12px; padding: 14px 18px; margin-bottom: 10px;">
                 <div style="display: flex; align-items: center;">
                     <span class="codigo-tag">{pregunta["codigo"]}</span>
@@ -484,132 +437,103 @@ def mostrar_cuestionario():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True
-        )
+        unsafe_allow_html=True,
+    )
 
-        st.markdown('<div class="pregunta-pregunta">¿Qué tanto te identifica esta afirmación?</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="pregunta-pregunta">¿Qué tanto te identifica esta'
+        ' afirmación?</div>',
+        unsafe_allow_html=True,
+    )
 
-        # ==========================================================
-        # OPCIONES DE RESPUESTA (RADIO HORIZONTAL CON ESTILO DE TARJETAS)
-        # ==========================================================
-        respuesta_actual = st.session_state.respuestas.get(
-            pregunta["codigo"],
-            None
-        )
-        
-        indice_inicial = opciones.index(respuesta_actual) if respuesta_actual in opciones else None
+    # ==========================================================
+    # OPCIONES DE RESPUESTA
+    # ==========================================================
+    respuesta_actual = st.session_state.respuestas.get(
+        pregunta["codigo"], None
+    )
+    indice_inicial = (
+        opciones.index(respuesta_actual)
+        if respuesta_actual in opciones
+        else None
+    )
 
-        seleccion = st.radio(
-            "Selecciona una opción:",
-            opciones,
-            index=indice_inicial,
-            key=f"respuesta_{indice}",
-            horizontal=True,
-            label_visibility="collapsed",
-            width="stretch"
-        )
+    seleccion = st.radio(
+        "Selecciona una opción:",
+        opciones,
+        index=indice_inicial,
+        key=f"respuesta_{indice}",
+        horizontal=True,
+        label_visibility="collapsed",
+    )
 
-        if seleccion:
-            st.session_state.respuestas[pregunta["codigo"]] = seleccion
+    if seleccion:
+      st.session_state.respuestas[pregunta["codigo"]] = seleccion
 
-        st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
-        # ==========================================================
-        # BOTONES DE NAVEGACIÓN INFERIORES
-        # ==========================================================
-        col_b1, col_b2, col_b3 = st.columns([1, 1.5, 1])
+    # ==========================================================
+    # BOTONES DE NAVEGACIÓN INFERIORES
+    # ==========================================================
+    col_b1, col_b2, col_b3 = st.columns([1, 1.5, 1])
 
-        with col_b1:
-            if st.button("← Anterior", use_container_width=True, disabled=(indice == 0)):
-                st.session_state.pregunta_actual -= 1
-                st.rerun()
+    with col_b1:
+      if st.button("← Anterior", use_container_width=True, disabled=(indice == 0)):
+        st.session_state.pregunta_actual -= 1
+        st.rerun()
 
-        with col_b2:
-            st.markdown(
-                """
+    with col_b2:
+      st.markdown(
+          """
                 <div style="text-align: center; color: #6B7280; font-size: 11px; padding-top: 6px;">
                     🔒 Tu progreso se guarda automáticamente<br>Puedes salir y continuar cuando lo desees.
                 </div>
                 """,
-                unsafe_allow_html=True
-            )
+          unsafe_allow_html=True,
+      )
 
-        with col_b3:
-            texto_boton = "Finalizar →" if indice == len(preguntas) - 1 else "Siguiente →"
+    with col_b3:
+      texto_boton = (
+          "Finalizar →" if indice == len(preguntas) - 1 else "Siguiente →"
+      )
 
-            if st.button(texto_boton, use_container_width=True, type="primary"):
+      if st.button(texto_boton, use_container_width=True, type="primary"):
+        respuesta_actual = st.session_state.respuestas.get(
+            pregunta["codigo"], None
+        )
 
-                # ==========================================================
-                # VALIDACIÓN OBLIGATORIA DE LA RESPUESTA
-                # ==========================================================
+        if respuesta_actual is None:
+          st.warning(
+              "⚠️ Por favor, selecciona una respuesta antes de continuar."
+          )
 
-                respuesta_actual = st.session_state.respuestas.get(
-                    pregunta["codigo"],
-                    None
-                )
+        elif indice == len(preguntas) - 1:
+          datos = st.session_state.get(
+              "datos_estudiante", {}
+          )  # Asegura fallback seguro
+          respuestas = st.session_state.respuestas
 
-                if respuesta_actual is None:
+          estilo, probabilidades = predecir_estilo(datos, respuestas)
 
-                    st.warning(
-                        "⚠️ Por favor, selecciona una respuesta antes de continuar."
-                    )
+          st.session_state.resultado = estilo
+          st.session_state.probabilidades = probabilidades
+          st.session_state.page = "resultado"
+          st.rerun()
 
-                elif indice == len(preguntas) - 1:
+        else:
+          st.session_state.pregunta_actual += 1
+          st.rerun()
 
-                    # ======================================================
-                    # DATOS PERSONALES
-                    # ======================================================
+    st.markdown("</div>", unsafe_allow_html=True)
 
-                    datos = st.session_state.datos_estudiante
+  # ==========================================================
+  # CUADRO INFERIOR (BOMBILLA)
+  # ==========================================================
+  st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
 
-                    # ======================================================
-                    # RESPUESTAS DEL CUESTIONARIO
-                    # ======================================================
-
-                    respuestas = st.session_state.respuestas
-
-                    # ======================================================
-                    # EJECUTAR EL MODELO
-                    # ======================================================
-
-                    estilo, probabilidades = predecir_estilo(
-                        datos,
-                        respuestas
-                    )
-
-                    # ======================================================
-                    # GUARDAR RESULTADOS
-                    # ======================================================
-
-                    st.session_state.resultado = estilo
-                    st.session_state.probabilidades = probabilidades
-
-                    # ======================================================
-                    # IR A RESULTADOS
-                    # ======================================================
-
-                    st.session_state.page = "resultado"
-                    st.rerun()
-
-                else:
-
-                    # ======================================================
-                    # AVANZAR A LA SIGUIENTE PREGUNTA
-                    # ======================================================
-
-                    st.session_state.pregunta_actual += 1
-                    st.rerun()
-
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    # ==========================================================
-    # CUADRO INFERIOR (TEXTO ORIGINAL CON LA BOMBILLA)
-    # ==========================================================
-    st.markdown("<div style='height: 8px;'></div>", unsafe_allow_html=True)
-    
-    with st.container():
-        st.markdown(
-            """
+  with st.container():
+    st.markdown(
+        """
             <div style="background: #FFF8F2; border: 1px solid #F2E6D9; border-radius: 12px; padding: 12px 18px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between;">
                 <div style="display: flex; align-items: center; gap: 14px; z-index: 2;">
                     <div style="background: #FFFFFF; border: 1px solid #F2E6D9; padding: 8px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
@@ -625,7 +549,12 @@ def mostrar_cuestionario():
                 </div>
             </div>
             """,
-            unsafe_allow_html=True
-        )
+        unsafe_allow_html=True,
+    )
 
-    st.markdown("<div style='text-align: center; color: #9CA3AF; font-size: 11px; margin-top: 8px;'>Universidad Autónoma de Bucaramanga | Facultad de Ingenierías | Maestría en Ciencia de Datos</div>", unsafe_allow_html=True)
+  st.markdown(
+      "<div style='text-align: center; color: #9CA3AF; font-size: 11px;"
+      " margin-top: 8px;'>Universidad Autónoma de Bucaramanga | Facultad de"
+      " Ingenierías | Maestría en Ciencia de Datos</div>",
+      unsafe_allow_html=True,
+  )
