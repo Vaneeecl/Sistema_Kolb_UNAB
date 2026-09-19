@@ -400,15 +400,6 @@ def mostrar_recomendaciones():
                         <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-3.44-2.54Z"/>
                     </svg>
                 </div>
-                <div style="font-size: 11px; font-weight: 700; color: #6B7280; margin-bottom: 4px;">
-                    PROBABILIDAD ESTIMADA
-                </div>
-                <div style="font-size: 30px; font-weight: 800; color: #10B981; margin-bottom: 4px;">
-                    90%
-                </div>
-                <div style="font-size: 13px; color: #10B981; font-weight: 600;">
-                    ✓ Resultado orientativo
-                </div>
             </div>
             """, unsafe_allow_html=True)
 
